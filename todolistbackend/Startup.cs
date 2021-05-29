@@ -35,6 +35,16 @@ namespace todolistbackend
 
             services.AddScoped<ITasksRepository, TasksRepository>();
 
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:3000/",
+                                            "https://todoswebsite.z13.web.core.windows.net/");
+                    });
+            });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -59,6 +69,8 @@ namespace todolistbackend
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
