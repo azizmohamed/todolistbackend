@@ -40,7 +40,8 @@ namespace todolistbackend
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.AllowAnyOrigin();
+                        builder.AllowAnyOrigin()
+                               .AllowAnyMethod();
                     });
             });
 
