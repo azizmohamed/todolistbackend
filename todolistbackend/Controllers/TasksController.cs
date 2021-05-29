@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using todolistbackend.domain.Data;
 using todolistbackend.domain.Interfaces;
 using todolistbackend.domain.Model;
 
@@ -14,9 +15,11 @@ namespace todolistbackend.Controllers
     public class TasksController : ControllerBase
     {
         ITasksRepository _tasksRepository;
-        public TasksController(ITasksRepository tasksRepository)
+        TasksContext _tasksContext;
+        public TasksController(ITasksRepository tasksRepository, TasksContext tasksContext)
         {
             _tasksRepository = tasksRepository;
+            _tasksContext = tasksContext;
         }
         // GET: api/Tasks
         [HttpGet]
@@ -37,6 +40,7 @@ namespace todolistbackend.Controllers
         public void Post([FromBody] TodoItem task)
         {
             _tasksRepository.Create(task);
+            _tasksContext.SaveChanges();
         }
 
         // PUT: api/Tasks/5
@@ -44,6 +48,7 @@ namespace todolistbackend.Controllers
         public void Put(Guid id, [FromBody] TodoItem task)
         {
             _tasksRepository.Update(id, task);
+            _tasksContext.SaveChanges();
         }
 
         // DELETE: api/Tasks/5
@@ -51,6 +56,7 @@ namespace todolistbackend.Controllers
         public void Delete(Guid id)
         {
             _tasksRepository.Delete(id);
+            _tasksContext.SaveChanges();
         }
     }
 }
