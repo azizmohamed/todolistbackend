@@ -40,8 +40,7 @@ namespace todolistbackend
                 options.AddDefaultPolicy(
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:3000/",
-                                            "https://todoswebsite.z13.web.core.windows.net/");
+                        builder.AllowAnyOrigin();
                     });
             });
 
