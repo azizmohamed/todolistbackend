@@ -49,7 +49,11 @@ namespace todolistbackend
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "todolistbackend v1"));
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "todolistbackend v1");
+                    c.RoutePrefix = string.Empty;  // Set Swagger UI at apps root
+                });
             }
 
             app.UseHttpsRedirection();
