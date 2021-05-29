@@ -16,6 +16,8 @@ namespace todolistbackend.domain.Repositories
 
         public void Create(TodoItem task)
         {
+            task.Id = new Guid();
+            task.Completed = false;
             _tasksContext.Tasks.Add(task);
         }
 
