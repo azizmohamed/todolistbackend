@@ -41,7 +41,8 @@ namespace todolistbackend
                     builder =>
                     {
                         builder.AllowAnyOrigin()
-                               .AllowAnyMethod();
+                               .AllowAnyMethod()
+                               .AllowAnyHeader();
                     });
             });
 
