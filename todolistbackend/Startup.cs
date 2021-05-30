@@ -31,7 +31,7 @@ namespace todolistbackend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<TasksContext>(options =>
-                options.UseInMemoryDatabase("TasksDatabase"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<ITasksRepository, TasksRepository>();
 
