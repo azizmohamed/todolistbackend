@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using todolistbackend.domain.Data;
 using todolistbackend.domain.Interfaces;
 using todolistbackend.domain.Model;
+using System.Linq;
 
 namespace todolistbackend.domain.Repositories
 {
@@ -14,31 +16,33 @@ namespace todolistbackend.domain.Repositories
             _tasksContext = tasksContext;
         }
 
-        public void Create(TodoItem task)
+        public async Task CreateAsync(TodoItem task)
         {
             task.Id = new Guid();
             task.Completed = false;
-            _tasksContext.Tasks.Add(task);
+            await _tasksContext.Tasks.AddAsync(task);
         }
 
-        public void Delete(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
-            _tasksContext.Tasks.Remove(Get(id));
+            var removedItem = await GetAsync(id);
+            _tasksContext.Tasks.Remove(removedItem);
         }
 
-        public IEnumerable<TodoItem> Get()
+        public async Task<IAsyncEnumerable<TodoItem>> GetAsync()
         {
-            return _tasksContext.Tasks;
+            return  _tasksContext.Tasks.AsAsyncEnumerable();
         }
 
-        public TodoItem Get(Guid id)
+        public async Task<TodoItem> GetAsync(Guid id)
         {
-            return _tasksContext.Tasks.Find(id);
+            return await _tasksContext.Tasks.FindAsync(id);
         }
 
-        public void Update(Guid id, TodoItem task)
+        public async Task UpdateAsync(Guid id, TodoItem task)
         {
-            _tasksContext.Tasks.Find(id).Completed = task.Completed;
+            var updatedTask = await _tasksContext.Tasks.FindAsync(id);
+            updatedTask.Completed = task.Completed;
         }
     }
 }

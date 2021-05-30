@@ -23,40 +23,40 @@ namespace todolistbackend.Controllers
         }
         // GET: api/Tasks
         [HttpGet]
-        public IEnumerable<TodoItem> Get()
+        public async Task<IAsyncEnumerable<TodoItem>> Get()
         {
-            return _tasksRepository.Get();
+            return await _tasksRepository.GetAsync();
         }
 
         // GET: api/Tasks/5
         [HttpGet("{id}", Name = "Get")]
-        public TodoItem Get(Guid id)
+        public async Task<TodoItem> Get(Guid id)
         {
-            return _tasksRepository.Get(id);
+            return await _tasksRepository.GetAsync(id);
         }
 
         // POST: api/Tasks
         [HttpPost]
-        public void Post([FromBody] TodoItem task)
+        public async Task Post([FromBody] TodoItem task)
         {
-            _tasksRepository.Create(task);
-            _tasksContext.SaveChanges();
+            await _tasksRepository.CreateAsync(task);
+            await _tasksContext.SaveChangesAsync();
         }
 
         // PUT: api/Tasks/5
         [HttpPut("{id}")]
-        public void Put(Guid id, [FromBody] TodoItem task)
+        public async Task Put(Guid id, [FromBody] TodoItem task)
         {
-            _tasksRepository.Update(id, task);
-            _tasksContext.SaveChanges();
+            await _tasksRepository.UpdateAsync(id, task);
+            await _tasksContext.SaveChangesAsync();
         }
 
         // DELETE: api/Tasks/5
         [HttpDelete("{id}")]
-        public void Delete(Guid id)
+        public async Task Delete(Guid id)
         {
-            _tasksRepository.Delete(id);
-            _tasksContext.SaveChanges();
+            await _tasksRepository.DeleteAsync(id);
+            await _tasksContext.SaveChangesAsync();
         }
     }
 }
