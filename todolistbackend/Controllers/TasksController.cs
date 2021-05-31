@@ -25,7 +25,13 @@ namespace todolistbackend.Controllers
             _tasksContext = tasksContext;
             _logger = logger;
         }
-        // GET: api/Tasks
+
+        /// <summary>
+        /// Get List Of Tasks Items
+        /// </summary>
+        /// <remarks>
+        /// List of created tasks with status reflected in completed field    
+        /// </remarks>
         [HttpGet]
         public async Task<ActionResult<IAsyncEnumerable<TodoItem>>> Get()
         {
@@ -33,7 +39,12 @@ namespace todolistbackend.Controllers
             return  Ok(await _tasksRepository.GetAsync());
         }
 
-        // GET: api/Tasks/5
+        /// <summary>
+        /// Get one task item
+        /// </summary>
+        /// <remarks>
+        /// Return one task item    
+        /// </remarks>
         [HttpGet("{id}", Name = "Get")]
         public async Task<ActionResult<TodoItem>> Get(Guid id)
         {
@@ -41,7 +52,12 @@ namespace todolistbackend.Controllers
             return Ok(await _tasksRepository.GetAsync(id));
         }
 
-        // POST: api/Tasks
+        /// <summary>
+        /// Create a new task
+        /// </summary>
+        /// <remarks>
+        ///  
+        /// </remarks>
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] TodoItem task)
         {
@@ -51,7 +67,12 @@ namespace todolistbackend.Controllers
             return Ok();
         }
 
-        // PUT: api/Tasks/5
+        /// <summary>
+        /// Modify an existing task
+        /// </summary>
+        /// <remarks>
+        ///  
+        /// </remarks>
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(Guid id, [FromBody] TodoItem task)
         {
@@ -61,7 +82,12 @@ namespace todolistbackend.Controllers
             return Ok();
         }
 
-        // DELETE: api/Tasks/5
+        /// <summary>
+        /// Delete a task
+        /// </summary>
+        /// <remarks>
+        ///  
+        /// </remarks>
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
