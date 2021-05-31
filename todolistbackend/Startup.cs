@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using todolistbackend.domain.Data;
 using todolistbackend.domain.Interfaces;
 using todolistbackend.domain.Repositories;
+using todolistbackend.Extensions;
 
 namespace todolistbackend
 {
@@ -62,8 +63,10 @@ namespace todolistbackend
             }
             else
             {
-                app.UseExceptionHandler("/error");
+                app.ConfigureExceptionHandler();
             }
+
+            
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
