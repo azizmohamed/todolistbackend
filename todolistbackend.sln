@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "todolistbackend", "todolist
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "todolistbackend.domain", "todolistbackend.domain\todolistbackend.domain.csproj", "{54E1A081-D0FA-44C8-B942-78E74A7B81D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "todolistbackend.tests", "todolistbackend.tests\todolistbackend.tests.csproj", "{01DA07CC-DC88-4653-99A9-338413BF73FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{54E1A081-D0FA-44C8-B942-78E74A7B81D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54E1A081-D0FA-44C8-B942-78E74A7B81D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54E1A081-D0FA-44C8-B942-78E74A7B81D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01DA07CC-DC88-4653-99A9-338413BF73FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01DA07CC-DC88-4653-99A9-338413BF73FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01DA07CC-DC88-4653-99A9-338413BF73FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01DA07CC-DC88-4653-99A9-338413BF73FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
